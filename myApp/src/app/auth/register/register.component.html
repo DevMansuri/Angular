@@ -1,0 +1,32 @@
+<div class="body">
+    <h2 class="text-center">Register Form</h2>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <form #f="ngForm" (ngSubmit)="submit()">
+
+                <input [(ngModel)]="form.name" name="name" #name="ngModel" type="text" class="form-control " placeholder="Name" required><br><br>
+                <div class="alert alert-danger" *ngIf="name.invalid && name.touched">*name is required</div>
+                
+                <input [(ngModel)]="form.email" name="email" #email="ngModel" type="text" class="form-control" placeholder="Email" required email><br><br>
+                <div class="alert alert-danger" *ngIf="email.errors?.['required'] && email.touched">*email is required</div>
+                <div class="alert alert-danger" *ngIf="email.errors?.['email'] && email.touched">*email format is not correct</div>
+                
+                <input [(ngModel)]="form.password" name="password" #password="ngModel" type="password" class="form-control" placeholder="Password" required minlength = 6><br><br>
+                <div class="alert alert-danger" *ngIf="password.errors?.['required'] && password.touched" >*password is required</div>
+                <div class="alert alert-danger" *ngIf="password.errors?.['minlength'] && password.touched" >*minimum 6 character required</div>
+
+                <input [(ngModel)]="form.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" type="password" class="form-control" placeholder="Confirm Password" required ><br><br>
+                <div class="alert alert-danger" *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched">*confirmpassword required</div>
+                <div class="alert alert-danger" *ngIf="password.value !== confirmPassword.value && confirmPassword.touched" >*password does not match</div>
+
+                <input [(ngModel)]="form.address" name="address" #address="ngModel" type="text" class="form-control" placeholder="Address" required><br><br>
+                <div class="alert alert-danger" *ngIf="address.invalid && address.touched">*address is required</div>
+                
+                <button type="submit" class="btn btn-primary"[disabled]="f.form.invalid" >Create an Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
