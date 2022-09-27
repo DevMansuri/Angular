@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top img-responsive"  src="{{book.src}}" alt="{{book.name}}">
+    <div class="card-body ">
+        <h5 class="card-title text-break ">{{book.name}} by {{book.author}}</h5>
+        <span class="amount badge bg-success text-break">{{book.amount | currency : 'INR'}}</span>
+ </div>
+
+    <div class="card-footer">
+        <button *ngIf="!book.isinCart" (click)="addToCard()" class="btn btn-danger form-control" style="letter-spacing: 2px;">{{"Add" | uppercase}}</button>
+        <button *ngIf="book.isinCart" (click)="removeFromCart()" class="btn btn-success form-control" style="letter-spacing: 2px;">{{"Remove" | uppercase}}</button>
+ 
+    </div>
+</div>
